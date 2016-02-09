@@ -14,6 +14,7 @@
 
 #include "DLA.h"
 #include "ImagePPM.h"
+#include "CellularAutomaton.h"
 
 
 using namespace std;
@@ -38,6 +39,13 @@ int main(int argc,char* argv[]){
 		
 	delete dla1;
 	delete miracle;
+	
+	CellularAutomaton cell_A = CellularAutomaton(400,400);
+	cell_A.fill_save();
+	
+	ImagePPM* miracle2 = new ImagePPM(400,cell_A.save);
+	miracle2->save("CellAutom.ppm");
+	delete miracle2;
 	
 	return 0;
 }

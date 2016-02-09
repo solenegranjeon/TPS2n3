@@ -1,6 +1,6 @@
 
-#ifndef IMAGEPPM_H__
-#define IMAGEPPM_H__
+#ifndef CELLULARAUTOMATON_H__
+#define CELLULARAUTOMATON_H__
 
 // ===========================================================================
 //                                  Includes
@@ -9,32 +9,32 @@
 #include <fstream>
 #include <cstring>
 #include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <ctime>
+
+#include "ImagePPM.h"
 
 using namespace std;
 
-class ImagePPM {
+class CellularAutomaton {
  public :
   // =========================================================================
   //                               Constructors
   // =========================================================================
-  ImagePPM();
-  ImagePPM(const ImagePPM&);
-  ImagePPM(string);
-  ImagePPM(int,int**);
-
+  CellularAutomaton();
+  CellularAutomaton(const CellularAutomaton&);
+  CellularAutomaton(int,int);
 
   // =========================================================================
   //                                Destructor
   // =========================================================================
-  virtual ~ImagePPM();
+  virtual ~CellularAutomaton();
 
   // =========================================================================
   //                                  Getters
   // =========================================================================
 	
-	inline int getW( void ) const;
-  inline int getH( void ) const;
-  inline int getMaxVal( void ) const;
 
   // =========================================================================
   //                                  Setters
@@ -50,11 +50,12 @@ class ImagePPM {
   // =========================================================================
   //                              Public Methods
   // =========================================================================
+	void Tn(void);
+	void fill_save(void);
+	//~ CellularAutomaton Tn(void);
 
-  void save( std::string file );
-  void desaturate( void );
-  void gaussian_blur( double* matrix );
-
+	int ** save;
+	
 	protected :
   // =========================================================================
   //                             Protected Methods
@@ -63,12 +64,11 @@ class ImagePPM {
   // =========================================================================
   //                                Attributes
   // =========================================================================
-	int W;
-	int H;
-	int MaxVal;
-	unsigned char* tab;
 	
-	
+	int* tab;
+	int size;
+	int iter;
+
 
 };
 
@@ -77,19 +77,6 @@ class ImagePPM {
 //                            Getters' definitions
 // ===========================================================================
 
-inline int ImagePPM::getW( void ) const{
-	return W;
-}
-
-inline int ImagePPM::getH( void ) const{
-	return H;
-}
-
-inline int ImagePPM::getMaxVal( void ) const{
-	return MaxVal;
-}
-  
-  
 
 // ===========================================================================
 //                            Setters' definitions
@@ -106,5 +93,7 @@ inline int ImagePPM::getMaxVal( void ) const{
 
 
 #endif
+
+
 
 

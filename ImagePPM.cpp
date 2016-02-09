@@ -57,11 +57,11 @@ ImagePPM::ImagePPM(int size, int** data){
 				index++;
 			}
 			else{
-				tab[index]=(unsigned char)2;
+				tab[index]=(unsigned char)254;
 				index++;
-				tab[index]=(unsigned char)200;
+				tab[index]=(unsigned char)254;
 				index++;
-				tab[index]=(unsigned char)2;
+				tab[index]=(unsigned char)254;
 				index++;
 			}
 		}

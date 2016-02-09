@@ -19,7 +19,16 @@ DLA::DLA(){
 }
 
 DLA::DLA(const DLA& im){
-	
+	L = im.L;
+	tab = new int*[L];
+	for(int i = 0; i<L; i++){
+		tab[i]= new int[L];
+	}
+	for(int x = 0; x<L; x++){
+		for(int y = 0; y<L; y++){
+			tab[x][y]=im.tab[x][y];
+		}
+	}
 }
 
 DLA::DLA(int size ,int xi,int yi){
